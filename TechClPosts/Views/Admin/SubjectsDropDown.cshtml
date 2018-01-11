@@ -1,0 +1,6 @@
+﻿@model List<TechClPosts.Models.AppModels.Subject>
+
+@foreach (var subj in Model)
+{
+    <option value="@subj.SubjectKey">@subj.SubjectName</option>
+}

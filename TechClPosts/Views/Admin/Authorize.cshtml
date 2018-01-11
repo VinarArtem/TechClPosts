@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-3.2.1.slim.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-3.2.1.intellisense.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap-theme.css" />
+    <script type="text/javascript" src="~/Scripts/Posts/Admin.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Posts/Admin.css" />
+</head>
+<body>
+    <div class="authorize-container">
+        @using (Html.BeginForm("Login", "Admin"))
+        {
+            <div class="form-group">
+                <label for="usr">Name:</label>
+                <input type="text" name="userLogin" autocomplete="off" class="form-control" id="userName">
+            </div>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" name="userPassword" class="form-control" id="userPassword">
+            </div>
+            <span class="text-danger">@ViewBag.ErrorMessage</span>
+            <input type="submit" id="authSubmit" value="Login" disabled="disabled" class="auth-submot btn btn-success" />
+        }
+    </div>
+</body>
+</html>

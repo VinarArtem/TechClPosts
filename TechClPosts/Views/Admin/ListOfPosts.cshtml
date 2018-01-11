@@ -1,0 +1,10 @@
+﻿@model List<TechClPosts.Models.AppModels.Post>
+
+@foreach (var post in Model)
+{
+    <div class="postContainer">
+        <h1>@post.Description</h1>
+        <h3>Comments: @post.Coments.Count</h3>
+        <input type="button" class="post-details-btn btn btn-primary btn-lg" id="postsDetails" value="Details" />
+    </div>
+}

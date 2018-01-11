@@ -1,0 +1,47 @@
+﻿@model TechClPosts.Models.AppModels.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Admin/_AdminLayout.cshtml";
+}
+<div class="add-post-form form-group" id="addPost">
+    <span class="glyphicon glyphicon-remove close-add-post-form" id="closeAddPostForm"></span>
+
+    <h3>Description:</h3>
+    <input type="text" placeholder="Enter Description" name="description" class="form-control" id="postDescription" />
+
+    <h3>Subject:</h3>
+    <select class="subjects-dropdown form-control" id="subjectDropdown"></select>
+
+    <div class="container-for-post-creator" id="editorContainer">
+        <div id="editor"></div>
+
+    </div>
+
+    <input type="button" value="Add new Post" class="add-post-btn btn btn-primary btn-lg" id="addNewPost" disabled="disabled" />
+</div>
+
+<div class="subjects-list" id="subjectsContainer">
+
+    <span class="glyphicon glyphicon-remove close-subj-list" id="closeSubjLisr"></span>
+
+    <div class="form-group">
+        <h3>New Subject:</h3>
+        <input type="text" placeholder="Subject Name" class="form-control" id="newSubjName" />
+        <input type="button" value="Add new Subject" class="add-subj-btn btn btn-primary btn-lg" id="addSubject" disabled="disabled" />
+    </div>
+
+    <div class="subj-list-container" id="subjList">
+
+    </div>
+
+</div>
+
+<div class="posts-list">
+
+    <span class="glyphicon glyphicon-remove close-posts-list" id="closePostjLisr"></span>
+
+    <div class="posts-container" id="listOfPosts">
+
+    </div>
+</div>

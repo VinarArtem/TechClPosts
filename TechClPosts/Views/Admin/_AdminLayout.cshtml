@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-ui-1.12.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/base/all.css" />
+    <script type="text/javascript" src="~/Scripts/Posts/Admin.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Posts/Admin.css" />
+    <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Tech Club</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#" id="posts">List of Posts</a></li>
+                <li class="active"><a href="#" id="showPostCreator">Add new Post</a></li>
+                <li class="active"><a href="#" id="subjects">Subjects</a></li>
+                <li><a href="#">Page 3</a></li>
+            </ul>
+        </div>
+    </nav>
+    @RenderBody()
+</body>
+</html>
