@@ -21,6 +21,8 @@
 
     $("#showPostCreator").click(function () {
 
+        $("#subjectsContainer, #postsListContainar, #postDetails").hide();
+
         if ($("#cke_editor").length == 0) {
             CKEDITOR.replace("editor");
         }
@@ -69,6 +71,8 @@
     //#region Subjects
 
     $("#subjects").click(function () {
+        $("#addPost, #postsListContainar, #postDetails").hide();
+
         $("#subjList").load("/Admin/SubjectsList")
 
         $("#subjectsContainer").show();
@@ -109,7 +113,7 @@
         }
     })
 
-    $("#closeSubjLisr").click(function () {
+    $("#closeSubjList").click(function () {
         $("#subjectsContainer").hide();
         $("#newSubjName").val("");
     })
@@ -119,15 +123,30 @@
     //#region Posts
 
     $("#posts").click(function () {
-        $("#listOfPosts").load("/Admin/ListOfPosts")
+        $("#addPost, #subjectsContainer, #postDetails").hide();
 
-        $(".posts-list").show();
+        $("#listOfPosts").load("/Admin/ListOfPosts");
+
+        $("#postsListContainar").show();
+    });
+
+    $("body").on("click", "input.post-details-btn", function () {
+        let postKey = $(this).attr("data-post-id");
+
+        $("#postContent").load("/Admin/PostDetails?postKey=" + postKey);
+
+        $("#postsListContainar").hide();
+        $("#postDetails").show();
+    });
+
+    $("#closePostjDetails").click(function () {
+        $("#postDetails").hide();
+        $("#postsListContainar").show();
     })
 
-    $("#closePostjLisr").click(function () {
-        $(".posts-list").hide();
-    })
+    $("#closePostjList").click(function () {
+        $("#postsListContainar").hide();
+    });
 
     //#endregion
 })
-

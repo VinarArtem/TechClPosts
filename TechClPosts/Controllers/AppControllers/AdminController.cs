@@ -42,26 +42,25 @@ namespace TechClPosts.Controllers.AppControllers
             return PartialView(posts.ToList());
         }
 
+        public ActionResult PostDetails(string postKey)
+        {
+            try
+            {
+                Guid postGuid = Guid.Parse(postKey);
+
+                Post post = postRepo.GetPost(postGuid);
+
+                return PartialView(post);
+            }
+            catch (Exception ex)
+            {
+                return new EmptyResult();
+            }
+        }
+
         #endregion
 
         #region PostsCreation
-
-        public ActionResult Posts()
-        {
-            User user = CheckAuthentication(Request.Cookies[id]);
-
-            if (user == null)
-            {
-                return RedirectToAction("Authorize");
-            }
-            else
-            {
-                var posts = postRepo.AllPosts()
-                        .OrderByDescending(x => x.CreationTime);
-
-                return PartialView(posts.ToList());
-            }
-        }
 
         public ActionResult SubjectsDropDown()
         {
@@ -110,11 +109,11 @@ namespace TechClPosts.Controllers.AppControllers
 
         #region Subject
 
-        public ActionResult AddSubject (string subjectName)
+        public ActionResult AddSubject(string subjectName)
         {
             User user = CheckAuthentication(Request.Cookies[id]);
 
-            if(user == null)
+            if (user == null)
             {
                 return RedirectToAction("Authorize");
             }

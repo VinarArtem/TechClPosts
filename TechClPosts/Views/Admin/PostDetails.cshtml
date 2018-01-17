@@ -1,0 +1,18 @@
+﻿@model TechClPosts.Models.AppModels.Post
+
+
+<div class="post-description">
+    <h2>@Model.Description</h2>
+</div>
+<hr />
+<div class="post-content">
+    @Html.Raw(Model.Content)
+</div>
+<div class="posts-comment">
+    @foreach (var comment in Model.Coments)
+    {
+        <div class="posts-comment">
+            @comment
+        </div>
+    }
+</div>

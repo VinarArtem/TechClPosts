@@ -5,6 +5,7 @@
     Layout = "~/Views/Admin/_AdminLayout.cshtml";
 }
 <div class="add-post-form form-group" id="addPost">
+
     <span class="glyphicon glyphicon-remove close-add-post-form" id="closeAddPostForm"></span>
 
     <h3>Description:</h3>
@@ -19,11 +20,12 @@
     </div>
 
     <input type="button" value="Add new Post" class="add-post-btn btn btn-primary btn-lg" id="addNewPost" disabled="disabled" />
+
 </div>
 
 <div class="subjects-list" id="subjectsContainer">
 
-    <span class="glyphicon glyphicon-remove close-subj-list" id="closeSubjLisr"></span>
+    <span class="glyphicon glyphicon-remove close-subj-list" id="closeSubjList"></span>
 
     <div class="form-group">
         <h3>New Subject:</h3>
@@ -37,11 +39,22 @@
 
 </div>
 
-<div class="posts-list">
+<div class="posts-list" id="postsListContainar">
 
-    <span class="glyphicon glyphicon-remove close-posts-list" id="closePostjLisr"></span>
+    <span class="glyphicon glyphicon-remove close-posts-list" id="closePostjList"></span>
 
     <div class="posts-container" id="listOfPosts">
 
     </div>
+
+</div>
+
+<div class="post-details-container" id="postDetails" title="Post">
+
+    <span class="glyphicon glyphicon-remove close-posts-details" id="closePostjDetails"></span>
+
+    <div class="post-presenter" id="postContent">
+
+    </div>
+
 </div>
