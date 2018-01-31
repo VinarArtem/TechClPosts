@@ -21,7 +21,7 @@
 
     $("#showPostCreator").click(function () {
 
-        $("#subjectsContainer, #postsListContainar, #postDetails").hide();
+        $("#subjectsContainer, #postsListContainar, #postDetails, #usersContainer").hide();
 
         if ($("#cke_editor").length == 0) {
             CKEDITOR.replace("editor");
@@ -71,7 +71,7 @@
     //#region Subjects
 
     $("#subjects").click(function () {
-        $("#addPost, #postsListContainar, #postDetails").hide();
+        $("#addPost, #postsListContainar, #postDetails, #usersContainer").hide();
 
         $("#subjList").load("/Admin/SubjectsList")
 
@@ -123,7 +123,7 @@
     //#region Posts
 
     $("#posts").click(function () {
-        $("#addPost, #subjectsContainer, #postDetails").hide();
+        $("#addPost, #subjectsContainer, #postDetails, #usersContainer").hide();
 
         $("#listOfPosts").load("/Admin/ListOfPosts");
 
@@ -149,4 +149,52 @@
     });
 
     //#endregion
+
+    //#region Users
+
+    $("#users").click(function () {
+        $("#addPost, #subjectsContainer, #postDetails, #postsListContainar").hide();
+
+        $("#usersContainer").show();
+    })
+
+    $("#newUserName, #newUserLogin, #newUserPassword").on("input", function () {
+        $(this).val($(this).val().replace(/^ /, "").replace(/  $/, " ").replace(/( ){2,}/g, " ").replace(/[^a-zA-Z0-9 ]/g, ""));
+
+        if ($(this).val().length > 50) {
+            $(this).val($(this).val().substring(0, 50));
+        }
+
+        if ($("#newUserName").val() != "" && $("#newUserLogin").val() != "" && $("#newUserPassword").val() != "" && ["0", "1"].includes($("#newUserRole").val())) {
+            $("#createNewUser").removeAttr('disabled');
+        } else {
+            $("#createNewUser").prop("disabled", true);
+        }
+    })
+
+    $("#createNewUser").click(function () {
+        if ($("#newUserName").val() != "" && $("#newUserLogin").val() != "" && $("#newUserPassword").val() != "" && ["0", "1"].includes($("#newUserRole").val())) {
+            let newUser = {
+                name: $("#newUserName").val().replace(/ $/, ""),
+                login: $("#newUserLogin").val().replace(/ $/, ""),
+                password: $("#newUserPassword").val().replace(/ $/, ""),
+                role: $("#newUserRole").val()
+            }
+
+            $.post(
+                "/Admin/AddUser",
+                newUser,
+                function (data, status) {
+                    //TODO: Hadle request result of adding new User
+                }
+                )
+        }
+    })
+
+    $("#closeUsers").click(function () {
+        $("#usersContainer").hide();
+    })
+
+    //#endregion
+
 })

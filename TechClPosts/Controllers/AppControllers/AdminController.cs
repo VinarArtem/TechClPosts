@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TechClPosts.Models.AppModels;
 using TechClPosts.Models.RepoInterfaces;
+using System.Net;
 
 namespace TechClPosts.Controllers.AppControllers
 {
@@ -95,12 +96,12 @@ namespace TechClPosts.Controllers.AppControllers
                     }
                     catch
                     {
-                        return new EmptyResult();
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                     }
                 }
                 else
                 {
-                    return new EmptyResult();
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
             }
         }
@@ -129,7 +130,7 @@ namespace TechClPosts.Controllers.AppControllers
                 }
                 else
                 {
-                    return new EmptyResult();
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
             }
         }
@@ -140,6 +141,48 @@ namespace TechClPosts.Controllers.AppControllers
                 .OrderBy(x => x.SubjectName);
 
             return PartialView(subjects.ToList());
+        }
+
+        #endregion
+
+        #region Users
+
+        public ActionResult AddUser(string name, string login, string password, string role)
+        {
+            User user = CheckAuthentication(Request.Cookies[id]);
+
+            if (user == null)
+            {
+                return RedirectToAction("Authorize");
+            }
+            else
+            {
+                if (!string.IsNullOrWhiteSpace(name)
+                    && !string.IsNullOrWhiteSpace(login)
+                    && !string.IsNullOrWhiteSpace(password)
+                    && !string.IsNullOrWhiteSpace(role))
+                {
+                    try
+                    {
+                        UserRole userRole = (UserRole)int.Parse(role);
+
+                        User newUser = new User(name, login, password, userRole);
+
+                        userRepo.AddUser(newUser);
+
+                        return new EmptyResult();
+                    }
+                    catch
+                    {
+                        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    }
+
+                }
+                else
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+            }
         }
 
         #endregion

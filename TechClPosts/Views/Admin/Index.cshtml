@@ -28,9 +28,12 @@
     <span class="glyphicon glyphicon-remove close-subj-list" id="closeSubjList"></span>
 
     <div class="form-group">
+
         <h3>New Subject:</h3>
         <input type="text" placeholder="Subject Name" class="form-control" id="newSubjName" />
+
         <input type="button" value="Add new Subject" class="add-subj-btn btn btn-primary btn-lg" id="addSubject" disabled="disabled" />
+
     </div>
 
     <div class="subj-list-container" id="subjList">
@@ -56,5 +59,36 @@
     <div class="post-presenter" id="postContent">
 
     </div>
+
+</div>
+
+<div class="users-container" id="usersContainer">
+
+    <span class="glyphicon glyphicon-remove close-user" id="closeUsers"></span>
+
+    <div class="create-new-user form-group">
+
+        <h2>New User</h2>
+
+        <h3>User Name:</h3>
+        <input type="text" placeholder="User Name" class="form-control" id="newUserName" />
+
+        <h3>User Role</h3>
+        <select class="form-control" id="newUserRole">
+            <option value="0" selected="selected">Common User</option>
+            <option value="1">Content Manager</option>
+        </select>
+
+        <h3>User Login</h3>
+        <input type="text" placeholder="Login" class="form-control" id="newUserLogin" />
+
+        <h3>User Password</h3>
+        <input type="password" placeholder="Password" class="form-control" id="newUserPassword" />
+
+        <input type="button" value="Create new User" class="add-user-btn btn btn-primary btn-lg" id="createNewUser" disabled="disabled" />
+
+    </div>
+
+
 
 </div>
