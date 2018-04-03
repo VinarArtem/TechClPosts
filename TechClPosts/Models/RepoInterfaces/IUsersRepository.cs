@@ -20,5 +20,7 @@ namespace TechClPosts.Models.RepoInterfaces
         void DeleteUser(User userToDelete);
 
         User UserLogin(string userName, string userPassword);
+
+        bool CheckIfLoginExist(string userLogin);
     }
 }

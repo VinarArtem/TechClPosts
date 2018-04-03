@@ -4,8 +4,8 @@
 {
     <div class="post-container">
         <h1>@post.Description</h1>
+        <input type="button" class="post-details-btn btn btn-primary btn-lg" value="Details" data-post-id="@post.PostKey" />
         <hr />
         <h3>Comments: @post.Coments.Count</h3>
-        <input type="button" class="post-details-btn btn btn-primary btn-lg" value="Details" data-post-id="@post.PostKey" />
     </div>
 }

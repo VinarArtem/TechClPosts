@@ -4,10 +4,37 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Scripts/Plugins/jquery-ui-1.12.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/themes/base/all.css" />
+    <script type="text/javascript" src="~/Scripts/Posts/Home.js"></script>
+    <link rel="stylesheet" type="text/css" href="~/Content/Posts/Home.css" />
+    <script type="text/javascript" src="~/Scripts/ckeditor/ckeditor.js"></script>
 </head>
 <body>
-    <div>
-        @RenderBody()
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">WebSiteName</a>
+            </div>
+
+            <div class="user-container">
+                @Html.Action("Index", "User")
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3">
+                @Html.Action("Index", "Subject")
+            </div>
+            <div class="col-sm-9">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 </body>
 </html>

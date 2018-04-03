@@ -179,6 +179,10 @@
     margin-top: 30px;
 }
 
+.users-list-container {
+
+}
+
 .close-user {
     cursor: pointer;
     left: 99%;

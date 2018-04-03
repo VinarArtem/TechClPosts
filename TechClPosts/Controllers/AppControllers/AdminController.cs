@@ -160,7 +160,8 @@ namespace TechClPosts.Controllers.AppControllers
                 if (!string.IsNullOrWhiteSpace(name)
                     && !string.IsNullOrWhiteSpace(login)
                     && !string.IsNullOrWhiteSpace(password)
-                    && !string.IsNullOrWhiteSpace(role))
+                    && !string.IsNullOrWhiteSpace(role)
+                    && userRepo.CheckIfLoginExist(login))
                 {
                     try
                     {
@@ -183,6 +184,14 @@ namespace TechClPosts.Controllers.AppControllers
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }
             }
+        }
+
+        public ActionResult UsersList()
+        {
+            var users = userRepo.AllUsers()
+                .OrderBy(x => x.Name);
+
+            return PartialView(users.ToList());
         }
 
         #endregion

@@ -8,15 +8,17 @@ using TechClPosts.Models.AppModels;
 
 namespace TechClPosts.Controllers.AppControllers
 {
-    public class HomeController : Controller
+    public class SubjectController : Controller
     {
-        //Users BD Repository
-        private IPostsRepository postRepo = new PostsRepository();
+        //Subject DB Repository
+        private ISubjectsRepository subjRepo = new PostsRepository();
 
-        // GET: Home
+        // GET: Subject
         public ActionResult Index()
         {
-            return View();
+            var subjects = subjRepo.AllSubjects().OrderBy(x => x.SubjectName);
+
+            return PartialView(subjects.ToList());
         }
     }
 }

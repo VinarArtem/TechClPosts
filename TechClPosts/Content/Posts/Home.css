@@ -1,0 +1,13 @@
+﻿/*#region User*/
+
+.user-container {
+    float: right;
+    margin-right: 10px;
+    color: #FFF;
+}
+
+.user-container .btn {
+    margin-left: 20px;
+}
+
+/*#endregion*/

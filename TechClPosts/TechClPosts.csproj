@@ -201,8 +201,9 @@
     <Compile Include="Controllers\AppControllers\AdminController.cs" />
     <Compile Include="Controllers\AppControllers\CommentController.cs" />
     <Compile Include="Controllers\AppControllers\HomeController.cs" />
-    <Compile Include="Controllers\AppControllers\PostController.cs" />
+    <Compile Include="Controllers\AppControllers\UserController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\AppControllers\SubjectController.cs" />
     <Compile Include="DAL\PostsContext.cs" />
     <Compile Include="DAL\PostsInitializer.cs" />
     <Compile Include="Global.asax.cs">
@@ -224,6 +225,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Posts\Home.css" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
     <Content Include="Scripts\ckeditor\ckeditor.js" />
@@ -703,6 +705,7 @@
     <Content Include="Scripts\Plugins\jquery-3.2.1.slim.min.js" />
     <Content Include="Scripts\Plugins\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\Plugins\jquery-ui-1.12.1.min.js" />
+    <Content Include="Scripts\Posts\Home.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -743,6 +746,10 @@
     <Content Include="Views\Admin\SubjectsList.cshtml" />
     <Content Include="Views\Admin\ListOfPosts.cshtml" />
     <Content Include="Views\Admin\PostDetails.cshtml" />
+    <Content Include="Views\Admin\UsersList.cshtml" />
+    <Content Include="Views\Subject\Index.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\User\Authorize.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,6 +24,12 @@ namespace TechClPosts.DAL
                 .WithMany(x => x.Comments)
                 .HasForeignKey(x => x.UserKey)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Post>()
+                .HasRequired(x => x.User)
+                .WithMany(x => x.Posts)
+                .HasForeignKey(x => x.UserKey)
+                .WillCascadeOnDelete(false);
         }
     }
 }

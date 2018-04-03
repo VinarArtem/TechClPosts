@@ -1,0 +1,10 @@
+﻿@model List<TechClPosts.Models.AppModels.Subject>
+
+<input type="text" class="form-control" placeholder="Filter" id="subjectsListFilter" />
+
+<div id="subjectsList">
+    @foreach (var subject in Model)
+    {
+        <a href="#"><h3>@subject.SubjectName</h3></a>
+    }
+</div>

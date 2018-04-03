@@ -155,11 +155,13 @@
     $("#users").click(function () {
         $("#addPost, #subjectsContainer, #postDetails, #postsListContainar").hide();
 
+        $("#usersList").load("/Admin/UsersList");
+
         $("#usersContainer").show();
     })
 
     $("#newUserName, #newUserLogin, #newUserPassword").on("input", function () {
-        $(this).val($(this).val().replace(/^ /, "").replace(/  $/, " ").replace(/( ){2,}/g, " ").replace(/[^a-zA-Z0-9 ]/g, ""));
+        $(this).val($(this).val().replace(/^ /, "").replace(/  $/, " ").replace(/[^a-zA-Z0-9 ]/g, ""));
 
         if ($(this).val().length > 50) {
             $(this).val($(this).val().substring(0, 50));
@@ -175,9 +177,9 @@
     $("#createNewUser").click(function () {
         if ($("#newUserName").val() != "" && $("#newUserLogin").val() != "" && $("#newUserPassword").val() != "" && ["0", "1"].includes($("#newUserRole").val())) {
             let newUser = {
-                name: $("#newUserName").val().replace(/ $/, ""),
-                login: $("#newUserLogin").val().replace(/ $/, ""),
-                password: $("#newUserPassword").val().replace(/ $/, ""),
+                name: $("#newUserName").val().replace(/ $/, "").replace(/( ){2,}/g, " "),
+                login: $("#newUserLogin").val().replace(/ $/, "").replace(/( ){2,}/g, " "),
+                password: $("#newUserPassword").val().replace(/ $/, "").replace(/( ){2,}/g, " "),
                 role: $("#newUserRole").val()
             }
 
@@ -185,7 +187,13 @@
                 "/Admin/AddUser",
                 newUser,
                 function (data, status) {
-                    //TODO: Hadle request result of adding new User
+                    if (status != 'success') {
+                        alert("Error occurred during creation of new user!\nPlease try again!");
+                    } else {
+                        $("#newUserName, #newUserLogin, #newUserPassword").val("");
+                        alert("New user was created!");
+                        $("#usersList").load("/Admin/UsersList");
+                    }
                 }
                 )
         }

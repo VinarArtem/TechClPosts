@@ -48,9 +48,16 @@ namespace TechClPosts.Models.AppModels
             db.SaveChanges();
         }
 
-        public User UserLogin (string userLogin, string userPassword)
+        public User UserLogin (string userLogin, string password)
         {
-            return db.Users.FirstOrDefault(x => x.Login == userLogin && x.Password == userPassword);
+            User user = db.Users.FirstOrDefault(x => x.Login == userLogin);
+
+            return user.Authorize(password) ? user : null;
+        }
+
+        public bool CheckIfLoginExist(string userLogin)
+        {
+            return db.Users.FirstOrDefault(x => x.Login == userLogin) == null;
         }
 
         #endregion
