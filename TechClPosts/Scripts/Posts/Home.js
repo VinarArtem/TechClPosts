@@ -9,6 +9,43 @@ $(document).ready(function () {
         location.href = "/";
     });
 
+    $("#userLogin, #userPassword").on("input", function () {
+        $(this).val($(this).val().replace(/^ /, "").replace(/  $/, " ").replace(/[^a-zA-Z0-9 ]/g, ""));
+
+        if ($(this).val().length > 50) {
+            $(this).val($(this).val().substring(0, 50));
+        }
+
+        if ($("#userLogin").val() != "" && $("#userPassword").val() != "") {
+            $("#loginBtn").removeAttr('disabled');
+        } else {
+            $("#loginBtn").prop("disabled", true);
+        }
+    })
+
+    $("#loginBtn").click(function () {
+        if ($("#userLogin").val() !== "" && $("#userPassword").val() !== "") {
+            let login = $("#userLogin").val();
+            let password = $("#userPassword").val();
+            
+            $.post(
+                "/User/Login",
+                {
+                    userLogin: login,
+                    userPassword: password
+                },
+                function (data, status) {
+                    if (data === "login failed") {
+                        alert("Wrong login or password!");
+                    } else if (data === "login successful") {
+                        location.href = location.href;
+                    } else {
+                        alert("Authentication error please try again!");
+                    }
+                }
+                )
+        }
+    })
 
     //#endregion
 

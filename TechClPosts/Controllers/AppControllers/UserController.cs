@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TechClPosts.Models.AppModels;
@@ -36,6 +37,30 @@ namespace TechClPosts.Controllers.AppControllers
                 {
                     return View(nameof(Authorize));
                 }
+            }
+        }
+
+        public ActionResult Login(string userLogin, string userPassword)
+        {
+            if (!string.IsNullOrWhiteSpace(userLogin) && !string.IsNullOrWhiteSpace(userPassword))
+            {
+                User user = userRepo.UserLogin(userLogin, userPassword);
+
+                if (user != null)
+                {
+                    HttpContext.Response.Cookies[id].Value = user.UserKey.ToString();
+                    HttpContext.Response.Cookies[id].Expires = DateTime.Now.AddDays(30);
+
+                    return Content("login successful");
+                }
+                else
+                {
+                    return Content("login failed");
+                }
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
         }
 

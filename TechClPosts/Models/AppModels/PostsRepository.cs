@@ -52,7 +52,14 @@ namespace TechClPosts.Models.AppModels
         {
             User user = db.Users.FirstOrDefault(x => x.Login == userLogin);
 
-            return user.Authorize(password) ? user : null;
+            if (user != null && user.Authorize(password))
+            {
+                return user;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public bool CheckIfLoginExist(string userLogin)
